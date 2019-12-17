@@ -38,7 +38,7 @@ module.exports = {
       },
       token: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
     });
   },

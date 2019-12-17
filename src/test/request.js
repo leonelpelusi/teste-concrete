@@ -4,9 +4,7 @@ import expect from 'chai';
 import joiAssert from 'joi-assert';
 
 import {
-  schemaUserCreate,
-  schemaUserSearch,
-  schemaSessionCreate
+  schemaUser,
 } from './schema'
 
 const URL;
@@ -20,7 +18,7 @@ describe('Teste da API Concrate'), function() {
     .expect('Content-Type',/json/)
     .end(function(err, res) {
       expect(res.status).to.be.eql(200);
-      joiAssert(res.body, schemaUserCreate);
+      joiAssert(res.body, schemaUser);
       done(err);
     })
   });
@@ -31,7 +29,7 @@ describe('Teste da API Concrate'), function() {
     .expect('Content-Type', /json/)
     .end(function (err, res) {
       expect(res.status).to.be.eql(200);
-      Joi.validate(res.body, schemaUserCreate, {
+      Joi.validate(res.body, schemaUser, {
         abortEarly: false
       }, (err, data) => {
         if (err) throw err;
@@ -47,7 +45,7 @@ describe('Teste da API Concrate'), function() {
     .expect('Content-Type',/json/)
     .end(function(err, res) {
       expect(res.status).to.be.eql(200);
-      joiAssert(res.body, schemaUserSearch);
+      joiAssert(res.body, schemaUser);
       done(err);
     })
   });
@@ -58,7 +56,7 @@ describe('Teste da API Concrate'), function() {
     .expect('Content-Type', /json/)
     .end(function (err, res) {
       expect(res.status).to.be.eql(200);
-      Joi.validate(res.body, schemaUserSearch, {
+      Joi.validate(res.body, schemaUser, {
         abortEarly: false
       }, (err, data) => {
         if (err) throw err;
@@ -74,7 +72,7 @@ describe('Teste da API Concrate'), function() {
     .expect('Content-Type',/json/)
     .end(function(err, res) {
       expect(res.status).to.be.eql(200);
-      joiAssert(res.body, schemaSessionCreate);
+      joiAssert(res.body, schemaUser);
       done(err);
     })
   });
@@ -85,7 +83,7 @@ describe('Teste da API Concrate'), function() {
     .expect('Content-Type', /json/)
     .end(function (err, res) {
       expect(res.status).to.be.eql(200);
-      Joi.validate(res.body, schemaSessionCreate, {
+      Joi.validate(res.body, schemaUser, {
         abortEarly: false
       }, (err, data) => {
         if (err) throw err;
