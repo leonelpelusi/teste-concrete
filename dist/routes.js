@@ -8,6 +8,9 @@ const routes = new (0, _express.Router)();
 
 routes.post('/users', _UserController2.default.store);
 routes.post('/sessions', _SessionController2.default.store);
+routes.post('/teste', (req, res) => {
+  return res.json({ message: "ok" });
+});
 
 routes.use(_auth2.default);
 
