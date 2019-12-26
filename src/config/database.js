@@ -1,5 +1,3 @@
-require("dotenv/config");
-
 module.exports = {
 	dialect: "postgres",
 	host: process.env.DB_HOST || "ec2-174-129-255-106.compute-1.amazonaws.com",

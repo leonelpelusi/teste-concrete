@@ -1,6 +1,4 @@
-"use strict";require("dotenv/config");
-
-module.exports = {
+"use strict";module.exports = {
 	dialect: "postgres",
 	host: process.env.DB_HOST || "ec2-174-129-255-106.compute-1.amazonaws.com",
 	port: process.env.DB_PORT || 5432,
