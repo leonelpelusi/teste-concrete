@@ -10,11 +10,11 @@ class SessionController {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      return res.status(401).json({ error: 'User does not exist' });
+      return res.status(400).json({ error: 'Username does not exist' });
     }
 
     if (!(await user.checkPassword(password))) {
-      return res.status(401).json({ error: 'Password does not match' });
+      return res.status(400).json({ error: 'Username and/or Password does not match' });
     }
 
     const token = await jwt.sign({ id: user.id }, configAuth.secret, {
@@ -25,7 +25,7 @@ class SessionController {
 
     await user.update({ login_at, token });
 
-    return res.json(user);
+    return res.status(200).json(user);
   }
 }
 

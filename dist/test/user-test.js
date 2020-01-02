@@ -16,7 +16,7 @@ describe('It should return a error Not authorized with status 401', () => {
       .set('Authorization', 'Bearer ')
       .end((err, res) => {
         res.should.have.status(401);
-        res.body.should.have.property('error').eql('Invalid Session');
+        res.body.should.have.property('error').eql('Not authorized');
         done();
       });
   });

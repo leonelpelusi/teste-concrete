@@ -8,7 +8,7 @@ class UserController {
     const userExist = await User.findOne({ where: { email: req.body.email } });
 
     if (userExist) {
-      return res.status(401).json({ error: 'User already exists' });
+      return res.status(400).json({ error: 'E-mail already exists' });
     }
 
     const userData = await User.create(req.body);
@@ -26,6 +26,10 @@ class UserController {
     const { user_id } = req.params;
     const authHeader = req.headers.authorization;
     const [, token] = authHeader.split(' ');
+
+    if (!token) {
+      return res.status(401).json({ error: 'Not authorized' });
+    }
 
     const user = await User.findOne({ where: { id: user_id } });
 
