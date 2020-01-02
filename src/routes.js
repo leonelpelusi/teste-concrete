@@ -6,13 +6,9 @@ import authMiddleware from './app/middleware/auth';
 
 const routes = new Router();
 
-routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
-routes.post('/teste', (req, res) => {
-  return res.json({ message: "ok" });
-});
 
-routes.use(authMiddleware);
+routes.post('/users', UserController.store);
+routes.get('/users/:user_id', authMiddleware, UserController.get);
 
-routes.get('/users/:user_id', UserController.get);
 export default routes;
